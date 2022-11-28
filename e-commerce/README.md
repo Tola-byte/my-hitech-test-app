@@ -1,34 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Table of contents
 
-## Getting Started
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- 
 
-First, run the development server:
+**Note: Delete this note and update the table of contents based on what sections you keep.**
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### The challenge
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Users should be able to: Order items and pay for them using PayStack gateway
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Instructions
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Ensure the use of redux for state management
+- You can decide to use of typescript
+- Ensure Clarity in codebase
+- Ensure The single responsibility pattern is adhered to
+- Ensure the DRY design pattern is taken into consideration
+- Ensure you implement the paystack checkout payment api _(bonus)_
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+### Links
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Solution URL / Github URL: [ https://github.com/Tola-byte/my-hitech-test-app ](https://your-solution-url.com)
+- Live Site URL: [ https://my-hitech-test-app.vercel.app/ ](https://your-live-site-url.com)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## My process
 
-## Deploy on Vercel
+### Built with
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox / Flex
+- [ReduxToolkit] for global state management
+- PayStack library for implementing payment transactions
+- [React](https://reactjs.org/) - JS library
+- [TypeScript] 
+- [Next.js](https://nextjs.org/) - React framework
+- [Styled Components](https://styled-components.com/) - For styles
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### What I Learnt 
+- I learned about using styled components for UI designs , and as I implement them on more projects, I'd get more efficient in it.
+
+### Useful Resources
+- https://paystack.com/docs/guides/accept_payments_on_your_react_app/
+- Google
+- Stackoverflow
+- freeCodeCamp etc
+
+### Author
+- Authored by me , Adetola Adeyeye .
+
+
+
