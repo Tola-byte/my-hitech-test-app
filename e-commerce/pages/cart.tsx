@@ -89,9 +89,7 @@ const FlexImage = styled.div`
 const Main = styled.div`
     margin-left: 200px
 
-    @media (max-width: 768px) {
-        padding-left: 10rem;
-    }
+   
 `
 const SumTotal = styled.div`
     display: flex;
