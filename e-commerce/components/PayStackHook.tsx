@@ -1,11 +1,17 @@
-import React from 'react'
-import { usePaystackPayment } from 'react-paystack';
+import React from "react";
+import { usePaystackPayment } from "react-paystack";
 
+interface config {
+  reference: number,
+  email: string,
+  amount: number,
+  publicKey: string
+}
 const config = {
-    reference: (new Date()).getTime(),
-    email: "user@example.com",
-    amount: 20000,
-    publicKey: 'pk_test_dsdfghuytfd2345678gvxxxxxxxxxx',
+  reference: new Date().getTime(),
+  email: "user@example.com",
+  amount: 20000,
+  publicKey: "pk_test_dsdfghuytfd2345678gvxxxxxxxxxx",
 };
 
 // you can call this function anything
@@ -17,18 +23,22 @@ const onSuccess = (reference : {} | []) => {
 // you can call this function anything
 const onClose = () => {
   // implementation for  whatever you want to do when the Paystack dialog closed.
-  console.log('closed')
-}
-const PayStackHook = () => {
-    const initializePayment = usePaystackPayment(config);
-  return (
-      <>
-          <button onClick={() => {
-              initializePayment(onSuccess, onClose)
-          }}>Paystack Hooks Implementation</button>
-      </>
-    
-  )
-}
+  console.log("closed");
+};
 
-export default PayStackHook
+const PayStackHook = () => {
+  const initializePayment = usePaystackPayment(config);
+  return (
+    <>
+      <button
+        onClick={() => {
+          initializePayment(onSuccess, onClose);
+        }}
+      >
+        Paystack Hooks Implementation
+      </button>
+    </>
+  );
+};
+
+export default PayStackHook;

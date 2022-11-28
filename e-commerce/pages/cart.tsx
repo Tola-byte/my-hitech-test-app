@@ -114,7 +114,7 @@ const Cart = () => {
         <HorizontalLine/>
        
             {
-                items.map((item : [] , id: number | string) => (
+                items.map((item : [] | {} , id: number | string) => (
                 <>
                  <Flex>
                 <MyItems key = {id}>
