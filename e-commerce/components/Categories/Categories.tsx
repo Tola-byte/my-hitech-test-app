@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useAppDispatch } from "../../app/hook";
 import { add } from "../../app/reducer/cart.reducer";
-
+import { myitems } from "../../utils/data";
 const Title = styled.div`
   font-weight: 400;
   font-size: 40px;
@@ -58,14 +58,15 @@ const ImageIndex= styled.div`
 const Button = styled.div`
   position: relative;
   z-index: 9;
+  cursor: pointer;
   margin-top: -28px;
   padding-right: 20px;
 `
 const Categories = () => {
   const dispatch = useAppDispatch();
-
+ 
   return (
-    <>
+    <div>
       <Title>Category name</Title>
 
       <Grid>
@@ -88,7 +89,12 @@ const Categories = () => {
                     alt="my products"
                     height="40"
                     width="40"
-                    onClick={() => dispatch(add({ ...product }))}
+                    onClick={() => dispatch(add(
+                     {
+                      ...product,
+                     }
+                      
+                    ))}
                   />
                 </Button>
               </Flex>
@@ -98,7 +104,7 @@ const Categories = () => {
           </Card>
         ))}
       </Grid>
-    </>
+    </div>
   );
 };
 

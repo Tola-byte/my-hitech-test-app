@@ -6,6 +6,7 @@ import { products } from '../../utils/data';
 import { add, remove } from "../../app/reducer/cart.reducer";
 import Link from 'next/link';
 import Image from 'next/image'
+import PayStackHook from '../PayStackHook';
 const ModalBackground = styled.div`
     background-color: rgba(57, 55, 72, 0.22);
     opacity: 1;
@@ -150,7 +151,10 @@ const PopUp = () => {
     return total 
   }
 
-  
+  interface Item  {
+    [title: string]: any;
+
+  }
   
 
   return (
@@ -160,12 +164,13 @@ const PopUp = () => {
 
         <h2>My Bag , <span> {items.length} items</span></h2>
         {
-           items.map((item : [] , id: number | string) => (
+           items.map((item, id: number | string) => (
             <>
              <Flex>
             <MyItems key = {id}>
             <h3>
                     {item?.title}
+                  
                 </h3>
     
                 <h5>SIZE :</h5>
@@ -199,12 +204,12 @@ const PopUp = () => {
 
         
         <ImageDiv>
-        <ButtonSelect onClick={() => dispatch(add({ ...products }))}>
+        <ButtonSelect onClick={() =>  dispatch(add(item)) }>
            +
         </ButtonSelect>
 
-        <h3> 1 </h3>
-        <ButtonSelect onClick={() => dispatch(remove({ ...products }))}>
+        <h3> {item.quantity} </h3>
+        <ButtonSelect onClick={() =>  dispatch(remove(item)) }>
             -
         </ButtonSelect>
 
@@ -242,7 +247,7 @@ const PopUp = () => {
                 </Link>
               </a>
               
-              <Checkout> <h4>CHECKOUT</h4> </Checkout>
+              <PayStackHook/>
               </LinkCart>
                
             </Total>

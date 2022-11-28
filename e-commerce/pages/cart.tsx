@@ -88,6 +88,14 @@ const FlexImage = styled.div`
 `
 const Main = styled.div`
     margin-left: 200px
+
+    @media (max-width: 768px) {
+        padding-left: 10rem;
+    }
+`
+const SumTotal = styled.div`
+    display: flex;
+    gap: 800px;
 `
 const ImageDiv = styled.div`
 
@@ -101,11 +109,30 @@ const Cart = () => {
     const router = useRouter();
     const dispatch = useAppDispatch();
     //const myproducts : string | undefined | string[] | number= router.query.products
+    
     const myproducts = router.query.products
      const  data  = myproducts != undefined ? myitems[ myproducts as keyof typeof myitems] : null 
     console.log(data , myproducts )
 
     const { items } = useAppSelector((state) => state.cart);
+    
+
+    const setTotal = (items: any[])=> {
+    let total = 0; 
+    if (items?.length !== products?.length) {
+      items?.forEach((item: { price: number; }) => total += item?.price)
+    } else if (items?.length === products?.length) {
+  
+      items?.forEach((item: { price: number; }) => total += item?.price)
+  
+    }
+    console.log(total)
+    return total 
+  }
+    interface Item {
+        [title: string]: any;
+        [price : number] :any;
+    }
   return (
         <>
         <Navbar />
@@ -114,7 +141,7 @@ const Cart = () => {
         <HorizontalLine/>
        
             {
-                items.map((item : [] | {} , id: number | string) => (
+                items.map((item , id: number | string) => (
                 <>
                  <Flex>
                 <MyItems key = {id}>
@@ -153,12 +180,12 @@ const Cart = () => {
 
             
             <ImageDiv>
-            <ButtonSelect onClick={() => dispatch(add({ ...products }))}>
+            <ButtonSelect onClick={() => dispatch(add(item))}>
                +
             </ButtonSelect>
 
-            <h3> 1 </h3>
-            <ButtonSelect onClick={() => dispatch(remove({ ...products }))}>
+            <h3> {item.quantity} </h3>
+            <ButtonSelect onClick={() => dispatch(remove(item))}>
                 -
             </ButtonSelect>
 
@@ -179,6 +206,13 @@ const Cart = () => {
                     </>
                 ))
                 }
+
+            <SumTotal>
+            <h3>Total</h3> 
+
+           
+              <h3>${setTotal(items)}</h3>
+            </SumTotal>
     </Main>
     <PayStackHook/>
     </>

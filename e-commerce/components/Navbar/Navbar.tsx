@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,6 +14,10 @@ const Nav = styled.div`
   height: 150px;
   width: 100%;
   position: relative;
+
+ @media (max-width: 768px){
+  margin-top: 1rem;
+ }
 `;
 
 const Categories = styled.div`
@@ -21,6 +25,12 @@ const Categories = styled.div`
   display: flex;
   justify-content: space-between;
   margin-left: 80px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    width: 10rem;
+    margin-left: 1rem;
+  }
 `;
 
 const Text = styled.div`
@@ -36,6 +46,12 @@ const Icons = styled.div`
   margin-right: 100px;
   cursor: pointer;
   align-items: start;
+
+  @media (max-width: 768px) {
+    display: flex;
+    width: 5rem;
+    margin-right: 1rem;
+  }
 `;
 
 const Button = styled.button`
@@ -67,7 +83,7 @@ const Navbar = () => {
   };
 
   const { items } = useAppSelector((state) => state.cart);
-  console.log(items)
+  //console.log(items)
   return (
     <Nav>
       <Categories>
@@ -78,7 +94,13 @@ const Navbar = () => {
         <Text> KIDS </Text>
 
       </Categories>
-      <Image src="/greenbag.png" alt="Green" width="30" height="30" />
+      <a>
+        <Link href="/">
+        <Image src="/greenbag.png" alt="Green" width="30" height="30" />
+        </Link>
+      
+      </a>
+      
     
 
       <Icons>

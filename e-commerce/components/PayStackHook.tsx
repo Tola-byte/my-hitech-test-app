@@ -1,21 +1,32 @@
 import React from "react";
 import { usePaystackPayment } from "react-paystack";
+import { useAppSelector } from "../app/hook";
+import { useAppDispatch } from "../app/hook";
+import { myitems , products } from '../utils/data';
+import styled from 'styled-components'
 
-interface config {
-  reference: number,
-  email: string,
-  amount: number,
-  publicKey: string
+
+
+const Checkout = styled.div`
+    width: 220px;
+    border-radius: 5px;
+    padding-left: 58px;
+    background: #5ECE7B;
+    color: white
+`
+const ButtonWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px
+
+`
+
+interface Ref {
+  [ref:string]:any
 }
-const config = {
-  reference: new Date().getTime(),
-  email: "user@example.com",
-  amount: 20000,
-  publicKey: "pk_test_dsdfghuytfd2345678gvxxxxxxxxxx",
-};
 
 // you can call this function anything
-const onSuccess = (reference : {} | []) => {
+const onSuccess = (reference : Ref | {} | [] | void ) => {
   // Implementation for whatever you want to do with reference and after success call.
   console.log(reference);
 };
@@ -26,17 +37,45 @@ const onClose = () => {
   console.log("closed");
 };
 
+const setTotal = (items: any[])=> {
+  let total = 0; 
+  if (items?.length !== products?.length) {
+    items?.forEach((item: { price: number; }) => total += item?.price)
+  } else if (items?.length === products?.length) {
+
+    items?.forEach((item: { price: number; }) => total += item?.price)
+
+  }
+  console.log(total)
+  return total 
+}
+
+
 const PayStackHook = () => {
-  const initializePayment = usePaystackPayment(config);
+  const dispatch = useAppDispatch()
+  
+  const { items } = useAppSelector((state : any) => state.cart);
+  const config = {
+    reference: new Date().getTime().toString(),
+    email: "user@example.com",
+    amount: setTotal(items) * 100 ,
+    publicKey: "pk_test_d4092ce3db5a82a4b470336b1bff4f34cbb49ae2",
+  };
+ 
+  const initializePayment  = usePaystackPayment(config);
   return (
     <>
-      <button
+    <ButtonWrap>
+
+    <Checkout
         onClick={() => {
           initializePayment(onSuccess, onClose);
         }}
       >
-        Paystack Hooks Implementation
-      </button>
+        <h4>ORDER NOW</h4>
+      </Checkout>
+    </ButtonWrap>
+     
     </>
   );
 };

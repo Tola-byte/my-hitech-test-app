@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -7,10 +8,17 @@ import Navbar from "../components/Navbar/Navbar";
 import { useAppDispatch } from "../app/hook";
 import { add } from "../app/reducer/cart.reducer";
 
+
+
+
 const SideImages = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: row;
+  }
 `;
 const MainImageContainer = styled.div`
   display: flex;
@@ -18,6 +26,11 @@ const MainImageContainer = styled.div`
   margin-left: 80px;
   gap: 80px;
   width: 300px;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.3rem;
+  }
 `;
 const Button = styled.div`
   width: 292px;
@@ -38,6 +51,7 @@ const ButtonSelect = styled.div`
   padding: 12px;
   cursor: pointer;
 `;
+
 const ButtonColor = styled.div`
   width: 40px;
   height: 40px;
@@ -68,14 +82,28 @@ const Size = styled.div`
   display: flex;
   gap: 10px;
 `;
+const MyText = styled.div`
+    @media (max-width: 768px) {
+      font-size: 1.2em;
+      margin-top: 2rem;
+      width: 20rem;
+      margin-bottom: 1.5rem;
+
+      font-weight: 400;
+    }
+`
 const SideBar = styled.div`
   margin-top: -20px;
   width: 400px;
+  @media (max-width: 768px) {
+
+
+  }
 `;
 const Products = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  //const myproducts : string | undefined | string[] | number= router.query.products
+  
   const myproducts = router.query.products;
   const data =
     myproducts != undefined
@@ -98,7 +126,9 @@ const Products = () => {
 
           <Image src={data?.image!} alt="my image" width="80" height="90" />
         </SideImages>
-        <Image src={data?.image!} alt="my image" width="570" height="400" />
+        <Image className = "image" src={data?.image!} alt="my image" width="570" height="400" />
+        
+       
         <SideBar>
           <h1>{data?.title}</h1>
 
@@ -120,11 +150,11 @@ const Products = () => {
 
           <Button onClick={handleAddToCart}> ADD TO CART</Button>
 
-          <p>
+          <MyText>
             Find stunning women's cocktail dresses and party dresses. Stand out
             in lace and metallic cocktail dresses and party dresses from all
             your favorite brands.
-          </p>
+          </MyText>
         </SideBar>
       </MainImageContainer>
     </div>

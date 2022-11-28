@@ -5,7 +5,7 @@ type CartItem = {
   image: string;
   title: string;
   linktitle?: string;
-  price: string;
+  price: number;
 };
 
 type CartItemWithQuantity = CartItem & { quantity: number };

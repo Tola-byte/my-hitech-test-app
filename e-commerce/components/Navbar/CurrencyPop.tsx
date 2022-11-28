@@ -11,6 +11,9 @@ const Switcher = styled.div`
   flex-direction: column;
   left: 0px;
   top: 50px;
+  @media (max-width: 768px) {
+    position: absolute;
+    left: -2.5rem;
 `;
 
 const Currency = styled.div`
